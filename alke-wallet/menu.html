@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Alke Wallet</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="menu.html">💰 Alke Wallet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="menu.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts.html">Mis Cuentas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deposit.html">Depositar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agenda.html">Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sendmoney.html">Transferir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transactions.html">Historial</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="btnLogout">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        
+        <!-- Saludo al usuario -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4 class="fw-bold" id="welcomeMessage">Bienvenido, Usuario</h4>
+            </div>
+        </div>
+        
+        <!-- Alerta si no tiene cuentas -->
+        <div class="alert alert-warning d-none" id="noAccountsAlert">
+            <strong>⚠️ No tienes cuentas bancarias registradas.</strong>
+            <p class="mb-0">Para operar necesitas 
+                <a href="accounts.html" class="alert-link">crear al menos una cuenta bancaria</a>.
+            </p>
+        </div>
+        
+        <!-- Tarjeta de saldo total -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-primary text-white shadow-lg">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3">Saldo Total (todas las cuentas)</h5>
+                        <h2 class="display-4 fw-bold" id="totalBalance">$0</h2>
+                        <p class="mb-3" id="accountsSummary">0 cuentas registradas</p>
+                        <a href="sendmoney.html" class="btn btn-light btn-lg me-2">
+                            📤 Transferir
+                        </a>
+                        <a href="accounts.html" class="btn btn-outline-light btn-lg">
+                            🏦 Mis Cuentas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accesos rápidos -->
+        <div class="row g-4 mb-4">
+            
+            <!-- Mis Cuentas -->
+            <div class="col-md-3 col-6">
+                <div class="card h-100 shadow-sm hover-card border-primary">
+                    <div class="card-body text-center p-3">
+                        <div class="mb-2">
+                            <span class="display-5">🏦</span>
+                        </div>
+                        <h6 class="card-title">Mis Cuentas</h6>
+                        <a href="accounts.html" class="btn btn-sm btn-primary">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Depositar -->
+            <div class="col-md-3 col-6">
+                <div class="card h-100 shadow-sm hover-card border-success">
+                    <div class="card-body text-center p-3">
+                        <div class="mb-2">
+                            <span class="display-5">💵</span>
+                        </div>
+                        <h6 class="card-title">Depositar</h6>
+                        <a href="deposit.html" class="btn btn-sm btn-success">Recargar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agenda -->
+            <div class="col-md-3 col-6">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center p-3">
+                        <div class="mb-2">
+                            <span class="display-5">👥</span>
+                        </div>
+                        <h6 class="card-title">Agenda</h6>
+                        <a href="agenda.html" class="btn btn-sm btn-outline-primary">Ver</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Historial -->
+            <div class="col-md-3 col-6">
+                <div class="card h-100 shadow-sm hover-card">
+                    <div class="card-body text-center p-3">
+                        <div class="mb-2">
+                            <span class="display-5">📊</span>
+                        </div>
+                        <h6 class="card-title">Historial</h6>
+                        <a href="transactions.html" class="btn btn-sm btn-outline-primary">Ver</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Últimos movimientos -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Últimos Movimientos</h5>
+                        <a href="transactions.html" class="btn btn-sm btn-outline-primary">Ver todos</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Descripción</th>
+                                        <th>Monto</th>
+                                        <th>Tipo</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentTransactions">
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-4">
+                                            No hay movimientos recientes
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <small class="text-muted">© 2025 Alke Wallet - Billetera Digital</small>
+        </div>
+    </footer>
+
+    <!-- jQuery via CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script principal -->
+    <script src="js/main.js"></script>
+    
+    <!-- Inicialización de la página -->
+    <script>
+        $(document).ready(function() {
+            checkAuth();
+            initHome();
+        });
+    </script>
+
+</body>
+</html>

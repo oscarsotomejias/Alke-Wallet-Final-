@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante - Alke Wallet</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="menu.html">💰 Alke Wallet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts.html">Mis Cuentas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deposit.html">Depositar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agenda.html">Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sendmoney.html">Transferir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transactions.html">Historial</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="btnLogout">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                
+                <!-- Tarjeta de comprobante -->
+                <div class="card shadow">
+                    
+                    <!-- Encabezado -->
+                    <div class="card-header bg-success text-white text-center py-4">
+                        <h1 class="display-1 mb-2">✓</h1>
+                        <h4 class="mb-1">¡Transferencia Exitosa!</h4>
+                        <p class="mb-0">Tu transferencia ha sido procesada</p>
+                    </div>
+                    
+                    <!-- Cuerpo -->
+                    <div class="card-body p-4">
+                        
+                        <!-- Monto -->
+                        <div class="text-center mb-4">
+                            <small class="text-muted">Monto transferido</small>
+                            <h2 class="display-5 fw-bold text-primary" id="receiptMonto">$0</h2>
+                        </div>
+                        
+                        <!-- Estado de acreditación -->
+                        <div id="receiptStatus" class="mb-4"></div>
+                        
+                        <hr>
+                        
+                        <!-- Detalles -->
+                        <div class="receipt-details">
+                            
+                            <!-- Cuenta origen -->
+                            <div class="row mb-3">
+                                <div class="col-5 text-muted">Cuenta origen:</div>
+                                <div class="col-7 fw-bold" id="receiptCuentaOrigen">-</div>
+                            </div>
+                            
+                            <hr>
+                            <h6 class="text-muted mb-3">Datos del destinatario</h6>
+                            
+                            <!-- Nombre -->
+                            <div class="row mb-2">
+                                <div class="col-5 text-muted">Nombre:</div>
+                                <div class="col-7 fw-bold" id="receiptNombre">-</div>
+                            </div>
+                            
+                            <!-- RUT -->
+                            <div class="row mb-2">
+                                <div class="col-5 text-muted">RUT:</div>
+                                <div class="col-7" id="receiptRut">-</div>
+                            </div>
+                            
+                            <!-- Banco -->
+                            <div class="row mb-2">
+                                <div class="col-5 text-muted">Banco:</div>
+                                <div class="col-7" id="receiptBanco">-</div>
+                            </div>
+                            
+                            <!-- Tipo cuenta -->
+                            <div class="row mb-2">
+                                <div class="col-5 text-muted">Tipo cuenta:</div>
+                                <div class="col-7" id="receiptTipoCuenta">-</div>
+                            </div>
+                            
+                            <!-- Número cuenta -->
+                            <div class="row mb-2">
+                                <div class="col-5 text-muted">N° cuenta:</div>
+                                <div class="col-7"><code id="receiptNumeroCuenta">-</code></div>
+                            </div>
+                            
+                            <!-- Mensaje (si existe) -->
+                            <div class="row mb-2 d-none" id="receiptMensajeRow">
+                                <div class="col-5 text-muted">Mensaje:</div>
+                                <div class="col-7 fst-italic" id="receiptMensaje">-</div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <!-- Fecha -->
+                            <div class="row mb-2">
+                                <div class="col-5 text-muted">Fecha y hora:</div>
+                                <div class="col-7" id="receiptFecha">-</div>
+                            </div>
+                            
+                            <!-- Referencia -->
+                            <div class="row">
+                                <div class="col-5 text-muted">N° referencia:</div>
+                                <div class="col-7"><code id="receiptReferencia">-</code></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- Footer -->
+                    <div class="card-footer bg-light p-3">
+                        <div class="d-grid gap-2">
+                            <a href="sendmoney.html" class="btn btn-primary">
+                                Nueva Transferencia
+                            </a>
+                            <a href="transactions.html" class="btn btn-outline-secondary">
+                                Ver Historial
+                            </a>
+                            <a href="menu.html" class="btn btn-outline-secondary">
+                                Volver al Inicio
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <small class="text-muted">© 2025 Alke Wallet - Billetera Digital</small>
+        </div>
+    </footer>
+
+    <!-- jQuery via CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script principal -->
+    <script src="js/main.js"></script>
+    
+    <!-- Inicialización -->
+    <script>
+        $(document).ready(function() {
+            checkAuth();
+            initReceipt();
+        });
+    </script>
+
+</body>
+</html>

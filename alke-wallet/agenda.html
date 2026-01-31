@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda - Alke Wallet</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="menu.html">💰 Alke Wallet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts.html">Mis Cuentas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deposit.html">Depositar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="agenda.html">Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sendmoney.html">Transferir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transactions.html">Historial</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="btnLogout">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        
+        <!-- Título de la página -->
+        <div class="row">
+            <div class="col-12">
+                <h4 class="fw-bold mb-4">👥 Agenda de Destinatarios</h4>
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <!-- Formulario para agregar destinatario -->
+            <div class="col-lg-5 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Agregar Nuevo Destinatario</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="contactForm">
+                            
+                            <!-- RUT -->
+                            <div class="mb-3">
+                                <label for="contactRut" class="form-label">
+                                    RUT <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="contactRut" 
+                                       placeholder="12.345.678-9" required>
+                                <div class="form-text">Formato: XX.XXX.XXX-X</div>
+                            </div>
+                            
+                            <!-- Nombre completo -->
+                            <div class="mb-3">
+                                <label for="contactNombre" class="form-label">
+                                    Nombre completo <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="contactNombre" 
+                                       placeholder="Nombre del destinatario" required>
+                            </div>
+                            
+                            <!-- Banco -->
+                            <div class="mb-3">
+                                <label for="contactBanco" class="form-label">
+                                    Banco <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="contactBanco" required>
+                                    <option value="">Seleccione un banco</option>
+                                    <option value="BANCO DE CHILE - EDWARDS">BANCO DE CHILE - EDWARDS</option>
+                                    <option value="BANCO INTERNACIONAL">BANCO INTERNACIONAL</option>
+                                    <option value="BANCO DEL ESTADO DE CHILE">BANCO DEL ESTADO DE CHILE</option>
+                                    <option value="SCOTIABANK">SCOTIABANK</option>
+                                    <option value="BCI MACHBANK">BCI MACHBANK</option>
+                                    <option value="BANCO SANTANDER">BANCO SANTANDER</option>
+                                    <option value="ITAU CHILE">ITAU CHILE</option>
+                                    <option value="BANCO SECURITY">BANCO SECURITY</option>
+                                    <option value="BANCO FALABELLA">BANCO FALABELLA</option>
+                                    <option value="BANCO RIPLEY">BANCO RIPLEY</option>
+                                    <option value="BANCO CONSORCIO">BANCO CONSORCIO</option>
+                                    <option value="BBVA">BBVA</option>
+                                    <option value="COOPEUCH DALE">COOPEUCH DALE</option>
+                                    <option value="TENPO PREPAGO S.A.">TENPO PREPAGO S.A.</option>
+                                    <option value="MERCADO PAGO">MERCADO PAGO</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Tipo de cuenta -->
+                            <div class="mb-3">
+                                <label for="contactTipoCuenta" class="form-label">
+                                    Tipo de cuenta <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="contactTipoCuenta" required>
+                                    <option value="">Seleccione tipo de cuenta</option>
+                                    <option value="Corriente">Cuenta Corriente</option>
+                                    <option value="Vista">Cuenta Vista</option>
+                                    <option value="Ahorro">Cuenta de Ahorro</option>
+                                    <option value="RUT">Cuenta RUT</option>
+                                    <option value="Prepago">Prepago</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Número de cuenta -->
+                            <div class="mb-3">
+                                <label for="contactNumeroCuenta" class="form-label">
+                                    Número de cuenta <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="contactNumeroCuenta" 
+                                       placeholder="Solo números" required>
+                            </div>
+                            
+                            <!-- Email (opcional) -->
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label">Email (opcional)</label>
+                                <input type="email" class="form-control" id="contactEmail" 
+                                       placeholder="correo@ejemplo.com">
+                                <div class="form-text">Se enviará comprobante a este correo</div>
+                            </div>
+                            
+                            <!-- Mensajes de error y éxito -->
+                            <div class="alert alert-danger d-none" id="formError" role="alert"></div>
+                            <div class="alert alert-success d-none" id="formSuccess" role="alert">
+                                Destinatario agregado exitosamente
+                            </div>
+                            
+                            <!-- Botón de envío -->
+                            <button type="submit" class="btn btn-primary w-100">
+                                Agregar Destinatario
+                            </button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lista de destinatarios -->
+            <div class="col-lg-7">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Mis Destinatarios</h5>
+                        <span class="badge bg-primary" id="contactCount">0</span>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>RUT</th>
+                                        <th>Banco</th>
+                                        <th>Cuenta</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contactsTable">
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted py-4">
+                                            No hay destinatarios registrados
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <small class="text-muted">© 2025 Alke Wallet - Billetera Digital</small>
+        </div>
+    </footer>
+
+    <!-- jQuery via CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script principal -->
+    <script src="js/main.js"></script>
+    
+    <!-- Inicialización de la página -->
+    <script>
+        $(document).ready(function() {
+            checkAuth();
+            initAgenda();
+        });
+    </script>
+
+</body>
+</html>

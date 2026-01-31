@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferir - Alke Wallet</title>
+    <!-- Bootstrap CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="menu.html">💰 Alke Wallet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="accounts.html">Mis Cuentas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="deposit.html">Depositar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agenda.html">Agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="sendmoney.html">Transferir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="transactions.html">Historial</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="btnLogout">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        
+        <!-- Título -->
+        <div class="row">
+            <div class="col-12">
+                <h4 class="fw-bold mb-4">📤 Realizar Transferencia</h4>
+            </div>
+        </div>
+        
+        <!-- Alerta si no hay cuentas -->
+        <div class="alert alert-warning d-none" id="noAccountsAlert">
+            <strong>⚠️ No tienes cuentas registradas.</strong>
+            <p class="mb-0">Primero debes <a href="accounts.html">agregar una cuenta bancaria</a> para poder transferir.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Nueva Transferencia</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        <form id="transferForm">
+                            
+                            <!-- Cuenta de origen -->
+                            <div class="mb-4">
+                                <label for="cuentaOrigen" class="form-label">
+                                    Cuenta de origen <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="cuentaOrigen" required>
+                                    <option value="">Seleccione una cuenta</option>
+                                </select>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <div class="form-text">Cuenta desde donde se enviará el dinero</div>
+                                    <a href="accounts.html" class="small">+ Agregar cuenta</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Info cuenta origen -->
+                            <div class="alert alert-light border mb-4 d-none" id="origenInfo">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Banco</small>
+                                        <p class="mb-0 fw-bold" id="origenBanco">-</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Número</small>
+                                        <p class="mb-0" id="origenNumero">-</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small class="text-muted">Saldo disponible</small>
+                                        <h5 class="mb-0 text-success" id="origenSaldo">$0</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <hr class="my-4">
+                            
+                            <!-- Destinatario -->
+                            <div class="mb-4">
+                                <label for="destinatario" class="form-label">
+                                    Destinatario <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="destinatario" required>
+                                    <option value="">Seleccione un destinatario</option>
+                                </select>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <div class="form-text">Persona que recibirá el dinero</div>
+                                    <a href="agenda.html" class="small">+ Agregar destinatario</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Info destinatario -->
+                            <div class="alert alert-light border mb-3 d-none" id="destinatarioInfo">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <small class="text-muted">Banco</small>
+                                        <p class="mb-0 fw-bold" id="infoBanco">-</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <small class="text-muted">Cuenta</small>
+                                        <p class="mb-0" id="infoCuenta">-</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Estado del destinatario -->
+                            <div class="mb-4 d-none" id="destinatarioStatus"></div>
+                            
+                            <hr class="my-4">
+                            
+                            <!-- Monto -->
+                            <div class="mb-4">
+                                <label for="monto" class="form-label">
+                                    Monto a transferir <span class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control form-control-lg" id="monto" 
+                                           placeholder="0" min="1" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Mensaje -->
+                            <div class="mb-4">
+                                <label for="mensaje" class="form-label">Mensaje (opcional)</label>
+                                <textarea class="form-control" id="mensaje" rows="2" 
+                                          placeholder="Ej: Pago arriendo enero" maxlength="100"></textarea>
+                                <div class="form-text">
+                                    <span id="charCount">0</span>/100 caracteres
+                                </div>
+                            </div>
+                            
+                            <!-- Email comprobante -->
+                            <div class="mb-4">
+                                <label for="emailComprobante" class="form-label">Email para comprobante (opcional)</label>
+                                <input type="email" class="form-control" id="emailComprobante" 
+                                       placeholder="correo@ejemplo.com">
+                                <div class="form-text">Se enviará una copia del comprobante a este correo</div>
+                            </div>
+                            
+                            <!-- Error -->
+                            <div class="alert alert-danger d-none" id="transferError" role="alert"></div>
+                            
+                            <!-- Botones -->
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg" id="btnTransferir">
+                                    📤 Transferir Ahora
+                                </button>
+                                <a href="menu.html" class="btn btn-outline-secondary">
+                                    Cancelar
+                                </a>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-3 bg-light">
+        <div class="container text-center">
+            <small class="text-muted">© 2025 Alke Wallet - Billetera Digital</small>
+        </div>
+    </footer>
+
+    <!-- jQuery via CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script principal -->
+    <script src="js/main.js"></script>
+    
+    <!-- Inicialización -->
+    <script>
+        $(document).ready(function() {
+            checkAuth();
+            initTransfer();
+        });
+    </script>
+
+</body>
+</html>
