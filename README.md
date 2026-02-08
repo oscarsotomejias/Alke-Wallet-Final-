@@ -39,23 +39,21 @@ Toda la información se gestiona mediante **localStorage**, sin backend ni base 
 
 ## 📁 Estructura del Proyecto
 
-Alke-Wallet-Final-/
-├── index.html # Pantalla inicial (redirige a login)
-├── login.html # Inicio de sesión
-├── register.html # Registro de usuarios
-├── home.html # Dashboard principal
-├── accounts.html # Gestión de cuentas bancarias
-├── deposit.html # Depósito de fondos
-├── agenda.html # Agenda de destinatarios
-├── transfer.html # Realizar transferencias
-├── receipt.html # Comprobante de transferencia
-├── history.html # Historial de movimientos
-│
-├── css/
-│ └── styles.css
-│
-├── js/
-│ └── main.js # Lógica principal de la aplicación
+📦alke-wallet
+ ┣ 📂css
+ ┃ ┗ 📜styles.css
+ ┣ 📂js
+ ┃ ┗ 📜main.js
+ ┣ 📜accounts.html
+ ┣ 📜agenda.html
+ ┣ 📜deposit.html
+ ┣ 📜index.html
+ ┣ 📜login.html
+ ┣ 📜menu.html
+ ┣ 📜receipt.html
+ ┣ 📜register.html
+ ┣ 📜sendmoney.html
+ ┗ 📜transactions.html
 
 
 ---
